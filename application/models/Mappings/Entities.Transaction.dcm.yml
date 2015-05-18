@@ -1,0 +1,46 @@
+Entities\Transaction:
+  type: entity
+  table: transaction
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    created_by:
+      type: string(32)
+      nullable: false
+    narrative:
+      type: string(512)
+      nullable: true
+    pay_slip_number:
+      type: string(16)
+      nullable: true
+    date_done:
+      type: date
+      nullable: false
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    transaction_type:
+      targetEntity: TransactionType
+      joinColumn:
+         name: transaction_type_id
+         referencedColumnName: id
+    transaction_status:
+      targetEntity: TransactionStatus
+      joinColumn:
+         name: transaction_status_id
+         referencedColumnName: id
+    term:
+      targetEntity: Term
+      joinColumn:
+         name: term_id
+         referencedColumnName: id		 

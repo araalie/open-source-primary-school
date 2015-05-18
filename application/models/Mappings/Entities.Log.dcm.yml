@@ -1,0 +1,30 @@
+Entities\Log:
+  type: entity
+  table: log
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    type:
+      type: integer(2)
+      nullable: false
+    object_type:
+      type: string(64)
+      nullable: true
+    object_id:
+      type: integer
+      nullable: false
+    username:
+      type: string(16)
+      nullable: false
+    client_ip_address:
+      type: string(16)
+      nullable: true
+    narrative:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false

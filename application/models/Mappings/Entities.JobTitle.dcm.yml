@@ -1,0 +1,27 @@
+Entities\JobTitle:
+  type: entity
+  table: job_title
+  uniqueConstraints:
+    job_title_idx:
+      columns: title
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string(32)
+      nullable: false
+    description:
+      type: string(128)
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: integer
+      nullable: false

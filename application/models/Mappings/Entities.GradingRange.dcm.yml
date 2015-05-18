@@ -1,0 +1,33 @@
+Entities\GradingRange:
+  type: entity
+  table: grading_range
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    minimum:
+      type: integer
+      nullable: false
+    maximum:
+      type: integer
+      nullable: false
+    code:
+      type: string(8)
+      nullable: false
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    grading:
+      targetEntity: Grading
+      joinColumn:
+        name: grading_id
+        referencedColumnName: id

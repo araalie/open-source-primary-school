@@ -1,0 +1,42 @@
+Entities\TeacherClassHistory:
+  type: entity
+  table: teacher_class_history
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO	  
+    comment:
+      type: string(128)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    study_subject:
+      targetEntity: StudySubject
+      joinColumn:
+        name: study_subject_id
+        referencedColumnName: id
+    teacher:
+      targetEntity: SchoolStaff
+      joinColumn:
+        name: school_staff_id
+        referencedColumnName: id
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id

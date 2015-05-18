@@ -1,0 +1,53 @@
+Entities\StudentInventoryRequirement:
+  type: entity
+  table: student_inventory_requirement
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO	  
+    number_brought_by_student:
+      type: float
+      nullable: true	  
+    number_bought_by_school:
+      type: float
+      nullable: true	  
+    was_paid:
+      type: boolean
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    student:
+      targetEntity: Student
+      joinColumn:
+        name: student_id
+        referencedColumnName: id  
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id
+    student_required_item:
+      targetEntity: StudentRequiredItem
+      joinColumn:
+        name: student_required_item_id
+        referencedColumnName: id
+    transaction:
+      targetEntity: Transaction
+      joinColumn:
+         name: transaction_id
+         referencedColumnName: id		

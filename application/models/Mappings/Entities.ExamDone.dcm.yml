@@ -1,0 +1,48 @@
+Entities\ExamDone:
+  type: entity
+  table: exam_done
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    marks:
+      type: float
+      nullable: true
+    grade:
+      type: string(8)
+      nullable: true	  
+    comments:
+      type: string(128)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    subject_instance:
+      targetEntity: SubjectInstance
+      joinColumn:
+        name: subject_instance_id
+        referencedColumnName: id
+    student:
+      targetEntity: Student
+      joinColumn:
+        name: student_id
+        referencedColumnName: id
+    exam:
+      targetEntity: Exam
+      joinColumn:
+        name: exam_id
+        referencedColumnName: id
+    exam_done_status:
+      targetEntity: ExamDoneStatus
+      joinColumn:
+        name: exam_done_status_id
+        referencedColumnName: id        

@@ -1,0 +1,41 @@
+Entities\StudentFeeType:
+  type: entity
+  table: student_fee_type
+  uniqueConstraints:
+    student_fee_type_name_idx:
+      columns: name
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string(32)
+      nullable: false	  
+    narrative:
+      type: string(512)
+      nullable: true
+    ordering:
+      type: integer
+      nullable: true  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:		 
+    fees_profile:
+      targetEntity: FeesProfile
+      joinColumn:
+        name: fees_profile_id
+        referencedColumnName: id
+    fee_frequency_type:
+      targetEntity: FeeFrequencyType
+      joinColumn:
+        name: fee_frequency_type_id
+        referencedColumnName: id		

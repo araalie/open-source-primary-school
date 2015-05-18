@@ -1,0 +1,39 @@
+Entities\AcademicYear:
+  type: entity
+  table: academic_year
+  uniqueConstraints:
+    academic_year_name_idx:
+      columns: name
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string(32)
+      nullable: false	  
+    date_began:
+      type: datetime
+      nullable: false
+    date_ended:
+      type: datetime
+      nullable: false
+    remarks:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: integer
+      nullable: false
+  manyToOne:
+    academic_year_status:
+      targetEntity: AcademicYearStatus
+      joinColumn:
+        name: academic_year_status_id
+        referencedColumnName: id

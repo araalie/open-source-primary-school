@@ -1,0 +1,36 @@
+Entities\StudentRequiredItemTermPrice:
+  type: entity
+  table: student_required_item_term_price
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    price:
+      type: float
+      nullable: true
+    transport_cost:
+      type: float
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    student_required_item:
+      targetEntity: StudentRequiredItem
+      joinColumn:
+        name: student_required_item_id
+        referencedColumnName: id
+      nullable: false
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id

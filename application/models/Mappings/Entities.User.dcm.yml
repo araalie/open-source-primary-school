@@ -1,0 +1,57 @@
+Entities\User:
+  type: entity
+  table: zauth_users
+  uniqueConstraints:
+    user_name_idx:
+      columns: username
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    username:
+      type: string(50)
+      nullable: false
+    email:
+      type: string(100)
+      nullable: false
+    password:
+      type: string(256)
+      nullable: false
+    activated:
+      type: boolean
+      nullable: false
+    banned:
+      type: boolean
+      nullable: false
+    ban_reason:
+      type: string(256)
+      nullable: true
+    new_password_key:
+      type: string(50)
+      nullable: true
+    new_password_requested:
+      type: datetime
+      nullable: true	  
+    new_email:
+      type: string(100)
+      nullable: true
+    new_email_key:
+      type: string(50)
+      nullable: true	  
+    last_ip:
+      type: string(50)
+      nullable: true
+    last_login:
+      type: datetime
+      nullable: false
+    created:
+      type: datetime
+      nullable: false
+    modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false

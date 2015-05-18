@@ -1,0 +1,27 @@
+Entities\AppOption:
+  type: entity
+  table: app_option
+  uniqueConstraints:
+    key_idx:
+      columns: key_name
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    key_name:
+      type: string(32)
+      nullable: false
+    value:
+      type: string(4000)
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false

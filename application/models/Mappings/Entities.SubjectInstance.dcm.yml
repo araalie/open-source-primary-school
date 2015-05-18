@@ -1,0 +1,45 @@
+Entities\SubjectInstance:
+  type: entity
+  table: subject_instance
+  uniqueConstraints:
+    subject_instance_name_idx:
+      columns: name  
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string(128)
+      nullable: false
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    subject_instance_status:
+      targetEntity: SubjectInstanceStatus
+      joinColumn:
+        name: subject_instance_status_id
+        referencedColumnName: id
+    study_subject:
+      targetEntity: StudySubject
+      joinColumn:
+        name: study_subject_id
+        referencedColumnName: id
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    teacher:
+      targetEntity: SchoolStaff
+      joinColumn:
+        name: teacher_id
+        referencedColumnName: id

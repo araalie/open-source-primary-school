@@ -1,0 +1,84 @@
+Entities\Student:
+  type: entity
+  table: student
+  uniqueConstraints:
+    student_number_idx:
+      columns: student_number  
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    student_number:
+       type: string(8)
+       nullable: false
+    first_name:
+      type: string(32)
+      nullable: false
+    surname:
+      type: string(32)
+      nullable: false
+    other_names:
+      type: string(32)
+      nullable: true
+    date_of_birth:
+      type: date
+      nullable: false
+    gender:
+      type: string(1)
+      nullable: false
+    year_enrolled:
+      type: integer
+      nullable: true 
+    year_completed:
+      type: integer
+      nullable: true    
+    telephone:
+      type: string(32)
+      nullable: true	  
+    address:
+      type: string(128)
+      nullable: true	  
+    email:
+      type: string(128)
+      nullable: true	
+    remarks:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    house:
+      targetEntity: House
+      joinColumn:
+         name: house_id
+         referencedColumnName: id
+    student_status:
+      targetEntity: StudentStatus
+      joinColumn:
+         name: student_status_id
+         referencedColumnName: id
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id		 
+    fees_profile:
+      targetEntity: FeesProfile
+      joinColumn:
+        name: fees_profile_id
+        referencedColumnName: id
+  oneToOne:
+    account:
+      targetEntity: Account
+      joinColumn:
+        name: account_id
+        referencedColumnName: id	

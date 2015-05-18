@@ -1,0 +1,34 @@
+Entities\SubjectExamGrading:
+  type: entity
+  table: subject_exam_grading
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    grading:
+      targetEntity: Grading
+      joinColumn:
+        name: grading_id
+        referencedColumnName: id
+    subject_instance:
+      targetEntity: SubjectInstance
+      joinColumn:
+        name: subject_instance_id
+        referencedColumnName: id
+    exam:
+      targetEntity: Exam
+      joinColumn:
+        name: exam_id
+        referencedColumnName: id    

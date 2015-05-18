@@ -1,0 +1,63 @@
+Entities\Debt:
+  type: entity
+  table: debt
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    total_debt_amount:
+      type: float
+      nullable: true
+    paid_amount:
+      type: float
+      nullable: true
+    narrative:
+      type: string(64)
+      nullable: false      
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    account:
+      targetEntity: Account
+      joinColumn:
+        name: account_id
+        referencedColumnName: id
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    term_incurred:
+      targetEntity: Term
+      joinColumn:
+        name: term_incurred_id
+        referencedColumnName: id
+    term_cleared:
+      targetEntity: Term
+      joinColumn:
+        name: term_cleared_id
+        referencedColumnName: id
+    debt_type:
+      targetEntity: DebtType
+      joinColumn:
+        name: debt_type_id
+        referencedColumnName: id
+    debt_status:
+      targetEntity: DebtStatus
+      joinColumn:
+        name: debt_status_id
+        referencedColumnName: id
+    fee_frequency_type:
+      targetEntity: FeeFrequencyType
+      joinColumn:
+        name: fee_frequency_type_id
+        referencedColumnName: id                                   

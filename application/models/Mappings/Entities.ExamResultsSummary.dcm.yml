@@ -1,0 +1,62 @@
+Entities\ExamResultsSummary:
+  type: entity
+  table: exam_results_summary
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    total_marks:
+      type: float
+      nullable: true
+    total_aggregates:
+      type: integer
+      nullable: true
+    position:
+      type: integer
+      nullable: true
+    division:
+      type: integer
+      nullable: true      
+    grade:
+      type: string(8)
+      nullable: true  
+    remarks:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    student:
+      targetEntity: Student
+      joinColumn:
+        name: student_id
+        referencedColumnName: id
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id        
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id
+    exam:
+      targetEntity: Exam
+      joinColumn:
+        name: exam_id
+        referencedColumnName: id 
+    exam_results_status:
+      targetEntity: ExamResultsStatus
+      joinColumn:
+        name: exam_results_status_id
+        referencedColumnName: id        

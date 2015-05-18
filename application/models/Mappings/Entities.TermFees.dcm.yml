@@ -1,0 +1,34 @@
+Entities\TermFees:
+  type: entity
+  table: term_fees
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    amount:
+      type: float
+    is_compulsary:
+      type: boolean
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    student_fee_type:
+      targetEntity: StudentFeeType
+      joinColumn:
+        name: student_fee_type_id
+        referencedColumnName: id

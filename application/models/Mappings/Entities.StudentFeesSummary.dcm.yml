@@ -1,0 +1,56 @@
+Entities\StudentFeesSummary:
+  type: entity
+  table: student_fees_summary
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    compulsary_amount_paid:
+      type: float
+      nullable: true
+    compulsary_amount_owed:
+      type: float
+      nullable: true
+    other_amount_paid:
+      type: float
+      nullable: true
+    other_amount_owed:
+      type: float
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    student:
+      targetEntity: Student
+      joinColumn:
+        name: student_id
+        referencedColumnName: id
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id
+    fee_frequency_type:
+      targetEntity: FeeFrequencyType
+      joinColumn:
+        name: fee_frequency_type_id
+        referencedColumnName: id
+    fees_summary_status:
+      targetEntity: FeesSummaryStatus
+      joinColumn:
+        name: fees_summary_status_id
+        referencedColumnName: id                 

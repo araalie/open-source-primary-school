@@ -1,0 +1,59 @@
+Entities\Kin:
+  type: entity
+  table: kin
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    first_name:
+      type: string(32)
+      nullable: false
+    surname:
+      type: string(32)
+      nullable: false
+    other_names:
+      type: string(32)
+      nullable: true
+    gender:
+      type: string(1)
+      nullable: false
+    email:
+      type: string(64)
+      nullable: true
+    telephone:
+      type: string(32)
+      nullable: true
+    address:
+      type: string(128)
+      nullable: true	  
+    remarks:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    kin_type:
+      targetEntity: KinType
+      joinColumn:
+        name: kin_type_id
+        referencedColumnName: id
+  manyToMany:
+    parent_guardians:
+      targetEntity: Kin
+      joinTable:
+        name: student_kin
+        joinColumns:
+          student_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          kin_id:
+            referencedColumnName: id

@@ -1,0 +1,39 @@
+Entities\ClassExam:
+  type: entity
+  table: class_exam
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    exam:
+      targetEntity: Exam
+      joinColumn:
+        name: exam_id
+        referencedColumnName: id
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    exam_status:
+      targetEntity: ExamStatus
+      joinColumn:
+         name: exam_status_id
+         referencedColumnName: id
+    grading_mode:
+      targetEntity: GradingMode
+      joinColumn:
+        name: grading_mode_id
+        referencedColumnName: id		 

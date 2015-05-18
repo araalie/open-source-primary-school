@@ -1,0 +1,59 @@
+Entities\Term:
+  type: entity
+  table: term
+  uniqueConstraints:
+    school_term_name_idx:
+      columns: name
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string(32)
+      nullable: false
+    description:
+      type: string(128)
+      nullable: true
+    date_began:
+      type: datetime
+      nullable: false
+    date_ended:
+      type: datetime
+      nullable: false
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    academic_year:
+      targetEntity: AcademicYear
+      joinColumn:
+        name: academic_year_id
+        referencedColumnName: id
+    term_status:
+      targetEntity: TermStatus
+      joinColumn:
+        name: term_status_id
+        referencedColumnName: id
+    term_type:
+      targetEntity: TermType
+      joinColumn:
+        name: term_type_id
+        referencedColumnName: id
+    previous_term:
+      targetEntity: Term
+      joinColumn:
+        name: previous_term_id
+        referencedColumnName: id
+    next_term:
+      targetEntity: Term
+      joinColumn:
+        name: next_term_id
+        referencedColumnName: id

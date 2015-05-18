@@ -1,0 +1,81 @@
+Entities\SchoolStaff:
+  type: entity
+  table: school_staff
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    first_name:
+      type: string(32)
+      nullable: false
+    surname:
+      type: string(32)
+      nullable: false
+    other_names:
+      type: string(32)
+      nullable: true	  
+    date_of_birth:
+      type: date
+      nullable: true
+    gender:
+      type: string(1)
+      nullable: false
+    email:
+      type: string(64)
+      nullable: true
+    telephone1:
+      type: string(32)
+      nullable: true	  
+    telephone2:
+      type: string(32)
+      nullable: true	  
+    address:
+      type: string(128)
+      nullable: true	  
+    year_joined:
+      type: integer
+      nullable: true 
+    year_left:
+      type: integer
+      nullable: true
+    remarks:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    job_title:
+      targetEntity: JobTitle
+      joinColumn:
+        name: job_title_id
+        referencedColumnName: id
+    title:
+      targetEntity: Title
+      joinColumn:
+        name: title_id
+        referencedColumnName: id
+    staff_status:
+      targetEntity: StaffStatus
+      joinColumn:
+        name: staff_status_id
+        referencedColumnName: id
+    system_account_status:
+      targetEntity: SystemAccountStatus
+      joinColumn:
+        name: system_account_status_id
+        referencedColumnName: id		
+  oneToOne:
+    user:
+      targetEntity: User
+      joinColumn:
+        name: user_id
+        referencedColumnName: id		

@@ -1,0 +1,43 @@
+Entities\Bursary:
+  type: entity
+  table: bursary
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    amount:
+      type: float
+      nullable: false      
+    comments:
+      type: string(128)
+      nullable: true
+    given_by:
+      type: string(32)
+      nullable: false
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    student:
+      targetEntity: Student
+      joinColumn:
+        name: student_id
+        referencedColumnName: id
+    term:
+      targetEntity: Term
+      joinColumn:
+         name: term_id
+         referencedColumnName: id
+    transaction:
+      targetEntity: Transaction
+      joinColumn:
+         name: transaction_id
+         referencedColumnName: id                 

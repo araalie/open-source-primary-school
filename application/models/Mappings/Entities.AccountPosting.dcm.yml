@@ -1,0 +1,47 @@
+Entities\AccountPosting:
+  type: entity
+  table: account_posting
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    amount:
+      type: float
+      nullable: false
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    transaction:
+      targetEntity: Transaction
+      joinColumn:
+         name: transaction_id
+         referencedColumnName: id
+    account:
+      targetEntity: Account
+      joinColumn:
+         name: account_id
+         referencedColumnName: id
+    student_fee_type:
+      targetEntity: StudentFeeType
+      joinColumn:
+         name: student_fee_type_id
+         referencedColumnName: id
+    account_posting_status:
+      targetEntity: AccountPostingStatus
+      joinColumn:
+         name: account_posting_status_id
+         referencedColumnName: id
+    debt:
+      targetEntity: Debt
+      joinColumn:
+         name: debt_id
+         referencedColumnName: id            		 

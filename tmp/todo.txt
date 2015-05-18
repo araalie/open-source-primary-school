@@ -1,0 +1,5 @@
+
+1. get current db
+2. u.bat it
+3. update db on msk server
+4. copy new files

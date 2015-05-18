@@ -1,0 +1,29 @@
+Entities\UserGroupMembership:
+  type: entity
+  table: user_group_membership
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:		 
+    school_staff:
+      targetEntity: SchoolStaff
+      joinColumn:
+        name: school_staff_id
+        referencedColumnName: id
+    user_group:
+      targetEntity: UserGroup
+      joinColumn:
+        name: user_group_id
+        referencedColumnName: id

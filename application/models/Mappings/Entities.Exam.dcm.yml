@@ -1,0 +1,38 @@
+Entities\Exam:
+  type: entity
+  table: exam
+  uniqueConstraints:
+    exam_name_idx:
+      columns: name
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string(200)
+      nullable: false	
+    remarks:
+      type: string(512)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id
+    exam_status:
+      targetEntity: ExamStatus
+      joinColumn:
+        name: exam_status_id
+        referencedColumnName: id        

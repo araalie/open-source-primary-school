@@ -1,0 +1,47 @@
+Entities\ClassType:
+  type: entity
+  table: class_type
+  uniqueConstraints:
+    class_type_name_idx:
+      columns: name
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string(32)
+      nullable: false
+    description:
+      type: string(128)
+      nullable: true
+    level:
+      type: integer
+      nullable: false
+    is_first_in_school_division:
+      type: boolean
+      nullable: true
+    is_last_in_school_division:
+      type: boolean
+      nullable: true
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    school_division:
+      targetEntity: SchoolDivision
+      joinColumn:
+        name: school_division_id
+        referencedColumnName: id  
+    default_grading_mode:
+      targetEntity: GradingMode
+      joinColumn:
+        name: default_grading_mode_id
+        referencedColumnName: id		

@@ -1,0 +1,42 @@
+Entities\StudentClassHistory:
+  type: entity
+  table: student_class_history
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO	  
+    comment:
+      type: string(128)
+      nullable: true	  
+    date_created:
+      type: datetime
+      nullable: false
+    date_last_modified:
+      type: datetime
+      nullable: false
+    is_valid:
+      type: boolean
+      nullable: false
+  manyToOne:
+    class_instance:
+      targetEntity: ClassInstance
+      joinColumn:
+        name: class_instance_id
+        referencedColumnName: id
+    student:
+      targetEntity: Student
+      joinColumn:
+        name: student_id
+        referencedColumnName: id
+    term:
+      targetEntity: Term
+      joinColumn:
+        name: term_id
+        referencedColumnName: id
+    fees_profile:
+      targetEntity: FeesProfile
+      joinColumn:
+        name: fees_profile_id
+        referencedColumnName: id
